@@ -1,5 +1,7 @@
 package com.kubalock.developer.demo;
 
+import com.kubalock.developer.demo.repository.CarRepository;
+import com.kubalock.developer.demo.model.Car;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,18 +13,5 @@ public class ServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ServerApplication.class, args);
-    }
-
-    @Bean
-    ApplicationRunner init(CarRepository repository) {
-        return args -> {
-            Stream.of("Ferrari", "Fiat 126p", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
-                    "AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
-                        Car car = new Car();
-                        car.setName(name);
-                        repository.save(car);
-                    });
-            repository.findAll().forEach(System.out::println);
-        };
     }
 }

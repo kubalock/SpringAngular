@@ -23,9 +23,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cars")
-public class Car {
+@Table(name = "cities")
+public class City {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private @NonNull String name;
+    private @NonNull int population;
 }

@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kubalock.developer.demo;
+package com.kubalock.developer.demo.controllers;
 
+import com.kubalock.developer.demo.repository.CarRepository;
+import com.kubalock.developer.demo.model.Car;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 /**
@@ -21,6 +25,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RestController
 public class CoolCarController {
     
+    @Autowired
     private CarRepository repository;
     
     public CoolCarController(CarRepository repository) {
