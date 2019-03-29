@@ -5,14 +5,14 @@
  */
 package com.kubalock.developer.demo.controllers;
 
-import com.kubalock.developer.demo.model.City;
-import com.kubalock.developer.demo.repository.CarRepository;
-import com.kubalock.developer.demo.repository.CityRepository;
+import com.kubalock.developer.demo.model.User;
+import com.kubalock.developer.demo.repository.UserRepository;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Grzegorz
  */
 @RestController
-public class CityController {
+public class UserController {
     
     @Autowired
-    private CityRepository repository;
+    private UserRepository repository;
     
-    public CityController(CityRepository repository) {
+    public UserController(UserRepository repository) {
         this.repository = repository;
     }
     
-    @GetMapping("/allCities")
+    @GetMapping("/team/{id}/users")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Collection<City> allCities() {
-        return repository.findAll().stream().collect(Collectors.toList());
+    public Collection<User> getAllTeams(@PathVariable(value = "id") int team_id) {
+        return repository.findByTeamId(team_id).stream().collect(Collectors.toList());
     }
 }

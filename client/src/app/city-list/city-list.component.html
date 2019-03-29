@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title>City List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let city of cities">
+        <img mat-list-avatar src="{{city.giphyUrl}}" alt="{{city.name}}">
+        <h3 mat-line>
+          <a mat-button [routerLink]="['/city-edit', city.id]">{{city.name}}</a>
+        </h3>
+        <h3 mat-line>Population: {{city.population}}</h3>
+        </mat-list-item>
+        </mat-list>
+        </mat-card-content>
+
+        <button mat-fab color="primary" [routerLink]="['/city-add']">Add</button>
+</mat-card>

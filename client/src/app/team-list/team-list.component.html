@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>Team List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let team of teams">
+        <h3 mat-line>
+          <a mat-button [routerLink]="['/team-info', team.team_id]">{{team.team_name}}</a>
+        </h3>
+        <h3 mat-line>{{team.team_description}}</h3>
+        <br>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

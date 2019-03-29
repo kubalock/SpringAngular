@@ -1,0 +1,16 @@
+<mat-card>
+
+    <mat-card-header>
+      <mat-card-title><h2>{{user.username}}</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <br>
+        <a mat-button [routerLink]="['/team-info', team.team_id]">{{team.team_name}}</a>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+    <mat-card-footer>
+
+    </mat-card-footer>
+</mat-card>
