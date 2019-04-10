@@ -7,10 +7,12 @@ package com.kubalock.developer.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.micrometer.core.lang.NonNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -24,6 +26,9 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FilterDef;
 
 /**
  *
@@ -47,8 +52,8 @@ public class User implements Serializable {
     private @NonNull
     String email;
     
-    @ManyToOne
-    @JoinColumn(name="team_id", foreignKey=@ForeignKey(name="team_id"))
-    @JsonBackReference
+    @ManyToOne(targetEntity=Team.class)
+    @JoinColumn(name = "team_id")
+    @JsonManagedReference
     private Team team;
 }

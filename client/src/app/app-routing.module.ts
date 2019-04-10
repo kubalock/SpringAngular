@@ -7,11 +7,24 @@ import { CityEditComponent } from './city-edit/city-edit.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { TeamInfoComponent } from './team-info/team-info.component';
 import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
+import { IndexComponent } from './index/index.component';
+import { TeamCreateComponent } from './team-create/team-create.component';
+import { TeamSelectedComponent } from './team-selected/team-selected.component';
+import { UserSelectedComponent } from './user-selected/user-selected.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/car-list', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'user/:id',
+    path: 'index',
+    component: IndexComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'dashboard',
     component: UserComponent
   },
   {
@@ -23,9 +36,21 @@ const routes: Routes = [
     component: TeamListComponent
   },
   {
-    path: 'team-info/:id',
+    path: 'team',
     component: TeamInfoComponent
   },
+  {
+    path: 'user/:id',
+    component: UserSelectedComponent
+  },
+  {
+    path: 'create-team',
+    component: TeamCreateComponent
+  },
+  {
+     path: 'team/:id',
+     component: TeamSelectedComponent
+   },
   {
     path: 'car-add',
     component: CarEditComponent

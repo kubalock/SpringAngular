@@ -1,5 +1,19 @@
 <mat-toolbar color="primary">
   <span>Welcome to {{title}}!</span>
 </mat-toolbar>
-
+<div class="container">
+  <ul class="nav nav-pills">
+    <li><a routerLinkActive="active" routerLink="/index">Home</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLinkActive="active" routerLink="/login">Login</a></li>
+    <li *ngIf="isLoggedIn"><button (click)="logout()">Logout</button></li>
+  </ul>
+</div>
+<div *ngIf="isLoggedIn" class="loggedOptions">
+  <ul class="nav nav-pills">
+    <li><a routerLinkActive="active" routerLink="/dashboard">Your details</a></li>
+    <li><a routerLinkActive="active" routerLink="/team">Team</a></li>
+    </ul>
+  </div>
+<div class="container">
 <router-outlet></router-outlet>
+</div>

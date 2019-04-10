@@ -20,26 +20,29 @@ export class UserComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
+    if(sessionStorage.getItem("user_id") != null) {
     this.sub = this.route.params.subscribe(params => {
-      const id = params['id'];
-      if (id) {
-        this.userService.get(id).subscribe((user: any) => {
+        this.userService.getUser(sessionStorage.getItem('username')).subscribe((user: any) => {
           if (user) {
             this.user = user;
-            this.user.href = user._links.self.href;
-            this.userService.getUserTeam(id).subscribe((team: any) => {
-              if (team) {
-                this.team = team;
-                this.team.href = team._links.self.href;
-                this.team.team_id = this.team.href.split('/').pop();
+            console.log(this.user);
+              if (user.team != null) {
+                sessionStorage.setItem('team_id', user.team.team_id);
+              } else {
+                sessionStorage.setItem('team_id', 'undefined');
               }
-            })
-          } else {
-            console.log('User not found');
           }
         });
-      }
     });
+  } else {
+          this.gotoHome();
+  }
+}
+
+
+
+  gotoHome() {
+    this.router.navigate(['/index']);
   }
 
 }

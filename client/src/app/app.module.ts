@@ -17,6 +17,11 @@ import { CityEditComponent } from './city-edit/city-edit.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { TeamInfoComponent } from './team-info/team-info.component';
 import { UserComponent } from './user/user.component';
+import { IndexComponent } from './index/index.component';
+import { LoginComponent } from './login/login.component';
+import { TeamCreateComponent } from './team-create/team-create.component';
+import { TeamSelectedComponent } from './team-selected/team-selected.component';
+import { UserSelectedComponent } from './user-selected/user-selected.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { UserComponent } from './user/user.component';
     CityEditComponent,
     TeamListComponent,
     TeamInfoComponent,
-    UserComponent
+    UserComponent,
+    IndexComponent,
+    LoginComponent,
+    TeamCreateComponent,
+    TeamSelectedComponent,
+    UserSelectedComponent
   ],
   imports: [
     BrowserModule,

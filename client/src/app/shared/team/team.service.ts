@@ -20,4 +20,12 @@ export class TeamService {
   getTeamUsers(id: string) {
     return this.http.get(this.API + '/team/' + id + '/users');
   }
+
+  remove(id: string) {
+    return this.http.put(this.API + '/removeTeam/' + id, id);
+  }
+
+  create(team: any) {
+    return this.http.post(this.API + '/createTeam/' + team.team_name + '/' + team.team_description + '/' + team.team_leader, team);
+  }
 }
